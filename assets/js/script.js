@@ -13,3 +13,25 @@
 // BOTON PARA LIMIPAR EL HIGHSCORE
 
 // GLOBAL VARIABLES
+// GET ELEMENTS
+
+var countdwn = document.getElementById("countdown");
+var mainEl = document.getElementById("main-section");
+var mainText = mainEl.querySelectorAll("h1");
+var startBtn = mainEl.getElementById("startGameBtn");
+
+console.log("coutndown", countdwn);
+console.log("main section", mainEl);
+console.log("h1 text", mainText);
+
+
+// ON CLICK EVENT
+startBtn.addEventListener("click", gameStart());
+
+// FUNCTIONS
+// START GAME FUNCTION
+function gameStart() {
+    console.log("Game Will start soon.")
+}
+
+countdwn.textContent = "Time left: 4 seconds";

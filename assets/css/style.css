@@ -6,7 +6,7 @@ header {
     align-items: center;
 }
 
-.main-section {
+#main-section {
     display: flex;
 
     flex-direction: column;
@@ -15,7 +15,7 @@ header {
     align-content: center;
 }
 
-.question {
+.questions {
     margin: 10px;
     padding: 10px;
     background: purple;
@@ -23,6 +23,6 @@ header {
     color: white;
 }
 
-.question:hover {
+.questions:hover {
     opacity: 60%;
 }
