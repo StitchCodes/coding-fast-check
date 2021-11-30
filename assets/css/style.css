@@ -26,4 +26,5 @@ header {
 
 .questions:hover {
     opacity: 60%;
+    cursor: pointer;
 }
