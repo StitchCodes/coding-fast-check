@@ -89,10 +89,28 @@ function gameStart() {
     var nextBtn = document.createElement("button");
     nextBtn.innerHTML = "Next";
     mainSection.appendChild(nextBtn);
+
+    // Compare question
+    var qstnTrigger = document.getElementsByClassName("questions");
+    console.log("qstn", qstnTrigger);
+    // qstnTrigger.addEventListener("click", compare);
+
+    for (let i = 0; i < qstnTrigger.length; i++) {
+        qstnTrigger[i].addEventListener("click", compare);
+        
+    }
 }
 
-// Compare question
 
+
+
+// Compare function
+function compare(event) {
+    tgt = event.tgt;
+
+    console.log("Triggered Event Target", tgt);
+    
+}
 
 countdwn.textContent = "Time left: 4 seconds";
 
