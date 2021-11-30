@@ -82,6 +82,8 @@ function gameStart() {
     nextBtn.innerHTML = "Next";
     mainSection.appendChild(nextBtn);
 
+    // Timer Start
+    timer();
     // Compare question
     var qstnTrigger = document.getElementsByClassName("questions");
 
@@ -160,13 +162,17 @@ function nextQuestion() {
     }
 }
 
-countdwn.textContent = "Time left: 4 seconds";
-
 // Timmer function
-function timer() {
-    
+function timer(){
+    var sec = 60;
+    var timer = setInterval(function(){
+        countdwn.innerHTML='Time left: 00:'+ sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
-
 // BOTON PARA LIMIPAR EL HIGHSCORE
 function clearHighscore() {
     console.log("highscore cleared");
