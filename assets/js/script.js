@@ -15,14 +15,11 @@
 // GLOBAL VARIABLES
 // GET ELEMENTS
 
-var mainText = mainEl.querySelectorAll("h1");
-var countdwn = document.getElementById("#countdown");
-var mainEl = document.getElementById("#main-section");
-var startBtn = mainEl.getElementById("#startGameBtn");
+var mainSection = document.getElementById("main-section");
+var mainText = mainSection.querySelectorAll("h1");
+var startBtn = document.getElementById("startGameBtn");
+var countdwn = document.getElementById("countdown");
 
-console.log("coutndown", countdwn);
-console.log("main section", mainEl);
-console.log("h1 text", mainText);
 
 // CREAR PREGUNTAS
 var questionOne = {
@@ -32,13 +29,42 @@ var questionOne = {
     option3:"dunno",
     option4:"maybe"
 };
-// ON CLICK EVENT
-startBtn.addEventListener("click", gameStart());
+
+var questions = {
+    question1: {
+        question: "are you happy?",
+        option1: "Yes", 
+        option2: "No",
+        option3: "dunno",
+        option4: "maybe"
+    },
+
+    question2: {
+        question: "Are you married?",
+        option1: "Yes", 
+        option2: "No",
+        option3: "dunno",
+        option4: "maybe"
+    }
+};
+
+
+// ON CLICK START GAME 
+startBtn.addEventListener("click", gameStart);
 
 // FUNCTIONS
 // START GAME FUNCTION
 function gameStart() {
     console.log("Game Will start soon.")
+    mainSection.innerHTML = "<h1>" + questions.question1.question;
+    var createList = document.createElement("ol");
+    var listItems = document.createElement("li");
+
+    var optionList = listItems.innerHTML = questions.question1.option1;
+
+    createList.appendChild(optionList);
+
+    // var listQuestions = createList.createElement("<li>");
 }
 
 countdwn.textContent = "Time left: 4 seconds";
