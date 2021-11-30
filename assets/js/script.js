@@ -1,9 +1,5 @@
 // INICIAR CON EL TEXTO DEL MOCK UP
-// BOTON DE INICIAR EL QUIZ QUE EJECUTA EL PROGRAMA
 // INICIAR EL TIMER
-// CAMBIAR EL TEXTO POR UNA PREGUNTA
-
-// CREAR RESPUESTA PARA CADA PREGUNTA
 // COMPARAR LA RESPUESTA DEL USUARIO CONTRA LA CORRECTA
 // DAR UNA PUNTUACION Y PASAR A LA SIGUIENTE PREGUNTA
 // AL FINAL DAR PUNTUACION Y MOSTRAR BOX PARA REGISTRAR EL NOMBRE
@@ -56,16 +52,47 @@ startBtn.addEventListener("click", gameStart);
 // START GAME FUNCTION
 function gameStart() {
     console.log("Game Will start soon.")
+    // Add question to DOM
     mainSection.innerHTML = "<h1>" + questions.question1.question;
+    // Create ol
     var createList = document.createElement("ol");
-    var listItems = document.createElement("li");
+    // Create li Items
+    var listItems1 = document.createElement("li");
+    listItems1.innerHTML = questions.question1.option1;
+    var listItems2 = document.createElement("li");
+    listItems2.innerHTML = questions.question1.option2;
+    var listItems3 = document.createElement("li");
+    listItems3.innerHTML = questions.question1.option3;
+    var listItems4 = document.createElement("li");
+    listItems4.innerHTML = questions.question1.option4;
 
-    var optionList = listItems.innerHTML = questions.question1.option1;
+    // Add class to each li
+    listItems1.setAttribute("class", "questions");
+    listItems2.setAttribute("class", "questions");
+    listItems3.setAttribute("class", "questions");
+    listItems4.setAttribute("class", "questions");
 
-    createList.appendChild(optionList);
+    // Append each li
+    createList.appendChild(listItems1);
+    createList.appendChild(listItems2);
+    createList.appendChild(listItems3);
+    createList.appendChild(listItems4);
+    
+    // Send List to DOM
+    mainSection.appendChild(createList);
+    // Create Buttons to DOM
+    var quitbtn = document.createElement("button");
+    // quitbtn.setAttribute("id", "button");
+    quitbtn.innerHTML = "Quit"
+    mainSection.appendChild(quitbtn);
 
-    // var listQuestions = createList.createElement("<li>");
+    var nextBtn = document.createElement("button");
+    nextBtn.innerHTML = "Next";
+    mainSection.appendChild(nextBtn);
 }
+
+// Compare question
+
 
 countdwn.textContent = "Time left: 4 seconds";
 

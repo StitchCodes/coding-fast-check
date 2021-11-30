@@ -18,6 +18,7 @@ header {
 .questions {
     margin: 10px;
     padding: 10px;
+    width: 200px;
     background: purple;
     border-radius: 20px;
     color: white;
