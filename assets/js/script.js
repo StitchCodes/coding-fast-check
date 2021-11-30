@@ -95,15 +95,15 @@ function gameStart() {
 
 
 
-
+// **************************************************************************************
 // Compare function
 function compare(event) {
-    tgt = event.target;
+    tgt = event.target.innerText;
 
     if (tgt !== "Yes") {
         console.log("tgt", tgt);
         alert("0 points!");
-        score = 0;
+        score = score;
         nextQuestion();
     }   else {
         alert("Gryffondor +10 points!");
@@ -157,8 +157,25 @@ function nextQuestion() {
     var qstnTrigger = document.getElementsByClassName("questions");
 
     for (let i = 0; i < qstnTrigger.length; i++) {
-        qstnTrigger[i].addEventListener("click", compare);
+        qstnTrigger[i].addEventListener("click", compare2);
         
+    }
+}
+
+// **************************************************************************************
+// Compare function 2
+function compare2(event) {
+    tgt = event.target.innerText;
+
+    if (tgt !== "Long Ago") {
+        console.log("tgt", tgt);
+        alert("0 points!");
+        score = score;
+        showScore();
+    }   else {
+        alert("Gryffondor +10 points!");
+        score = score + 10;
+        showScore();
     }
 }
 
@@ -174,6 +191,32 @@ function timer(){
         }
     }, 1000);
 }
+
+// Show score function
+function showScore() {
+    mainSection.innerHTML = "<h1>" + "Your score is: " + score;
+    saveScore = document.createElement("p");
+    saveScore.innerHTML = "Write your name to save your score."
+    mainSection.appendChild(saveScore);
+
+    // create input box
+    var inputBox = document.createElement("input");
+    inputBox.setAttribute('type', 'text');
+    inputBox.setAttribute('value', 'Name');
+
+    mainSection.appendChild(inputBox);
+
+    // Buttons
+    var saveScoreBtn = document.createElement("button");
+    var seeHighscoreBtn = document.createElement("button");
+
+    saveScoreBtn.innerHTML = "Save Score";
+    seeHighscoreBtn.innerHTML = "See Highscores";
+
+    mainSection.appendChild(saveScoreBtn);
+    mainSection.appendChild(seeHighscoreBtn);
+}
+
 // BOTON PARA LIMIPAR EL HIGHSCORE
 function clearHighscore() {
     console.log("highscore cleared");
@@ -183,3 +226,5 @@ function clearHighscore() {
 function replay() {
     console.log("I want to play again");
 }
+
+// save to local storage
