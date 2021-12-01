@@ -203,28 +203,49 @@ function showScore() {
     var inputBox = document.createElement("input");
     inputBox.setAttribute('type', 'text');
     inputBox.setAttribute('value', 'Name');
+    inputBox.setAttribute("id", "textBox")
 
     mainSection.appendChild(inputBox);
 
     // Buttons
     var saveScoreBtn = document.createElement("button");
     var seeHighscoreBtn = document.createElement("button");
+    var clearScore = document.createElement("button");
+
+    saveScoreBtn.setAttribute("id", "saveScore");
+    seeHighscoreBtn.setAttribute("id", "seeHighscore");
+    clearScore.setAttribute("id","clearHS");
 
     saveScoreBtn.innerHTML = "Save Score";
     seeHighscoreBtn.innerHTML = "See Highscores";
+    clearScore.innerHTML = "Clear Highscore"
 
     mainSection.appendChild(saveScoreBtn);
     mainSection.appendChild(seeHighscoreBtn);
+    mainSection.appendChild(clearScore);
+
+    var scoreStore = document.getElementById("saveScore");
+    scoreStore.addEventListener("click", storage);
+    
 }
 
 // BOTON PARA LIMIPAR EL HIGHSCORE
 function clearHighscore() {
+    localStorage.clear();
     console.log("highscore cleared");
 }
 
 // BOTON PARA VOLVER A JUGAR 
 function replay() {
     console.log("I want to play again");
+    gameStart();
 }
 
 // save to local storage
+function storage() {
+    var nameValue = document.getElementById("textBox");
+    var nameStorage = nameValue.innerText;
+    console.log('inputtext=', nameStorage);
+    nameStorage = localStorage.setItem("Name",nameStorage);
+    scoreStorage = localStorage.setItem("Score", score);
+}
