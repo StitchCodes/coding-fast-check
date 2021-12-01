@@ -16,6 +16,8 @@ var mainText = mainSection.querySelectorAll("h1");
 var startBtn = document.getElementById("startGameBtn");
 var countdwn = document.getElementById("countdown");
 var score = 0;
+var localName = [];
+var localScore = [];
 
 
 // CREAR PREGUNTAS
@@ -245,8 +247,10 @@ function replay() {
 // save to local storage
 function storage() {
     var nameValue = document.getElementById("textBox");
-    var nameStorage = nameValue.innerText;
+    var nameStorage = nameValue.value;
     console.log('input text =', nameValue);
     nameStorage = localStorage.setItem("Name", nameStorage);
+    localName = localName.push(nameStorage);
     scoreStorage = localStorage.setItem("Score", score);
+    localScore = localScore.push(scoreStorage);
 }
