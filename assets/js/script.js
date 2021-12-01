@@ -208,22 +208,27 @@ function showScore() {
     var saveScoreBtn = document.createElement("button");
     var seeHighscoreBtn = document.createElement("button");
     var clearScore = document.createElement("button");
+    var replay = document.createElement("button");
 
     saveScoreBtn.setAttribute("id", "saveScore");
     seeHighscoreBtn.setAttribute("id", "seeHighscore");
     clearScore.setAttribute("id","clearHS");
+    replay.setAttribute("id", "replay");
 
     saveScoreBtn.innerHTML = "Save Score";
     seeHighscoreBtn.innerHTML = "See Highscores";
-    clearScore.innerHTML = "Clear Highscore"
+    clearScore.innerHTML = "Clear Highscore";
+    replay.innerHTML = "Play Again";
 
     mainSection.appendChild(saveScoreBtn);
     mainSection.appendChild(seeHighscoreBtn);
     mainSection.appendChild(clearScore);
+    mainSection.appendChild(replay);
 
     var scoreStore = document.getElementById("saveScore");
     scoreStore.addEventListener("click", storage);
     clearScore.addEventListener("click", clearHighscore);
+    replay.addEventListener("click", playAgain);
     
 }
 
@@ -234,7 +239,7 @@ function clearHighscore() {
 }
 
 // BOTON PARA VOLVER A JUGAR 
-function replay() {
+function playAgain() {
     console.log("I want to play again");
     gameStart();
 }
