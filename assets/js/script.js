@@ -226,6 +226,7 @@ function showScore() {
 
     var scoreStore = document.getElementById("saveScore");
     scoreStore.addEventListener("click", storage);
+    clearScore.addEventListener("click", clearHighscore);
     
 }
 
@@ -245,7 +246,7 @@ function replay() {
 function storage() {
     var nameValue = document.getElementById("textBox");
     var nameStorage = nameValue.innerText;
-    console.log('inputtext=', nameStorage);
-    nameStorage = localStorage.setItem("Name",nameStorage);
+    console.log('input text =', nameValue);
+    nameStorage = localStorage.setItem("Name", nameStorage);
     scoreStorage = localStorage.setItem("Score", score);
 }
