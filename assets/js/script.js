@@ -16,8 +16,7 @@ var mainText = mainSection.querySelectorAll("h1");
 var startBtn = document.getElementById("startGameBtn");
 var countdwn = document.getElementById("countdown");
 var score = 0;
-var localName = [];
-var localScore = [];
+var recentPlayers = {};
 
 
 // CREAR PREGUNTAS
@@ -103,12 +102,9 @@ function compare(event) {
     tgt = event.target.innerText;
 
     if (tgt !== "Yes") {
-        console.log("tgt", tgt);
-        alert("0 points!");
         score = score;
         nextQuestion();
     }   else {
-        alert("Gryffondor +10 points!");
         score = score + 10;
         nextQuestion();
     }
@@ -171,11 +167,9 @@ function compare2(event) {
 
     if (tgt !== "Long Ago") {
         console.log("tgt", tgt);
-        alert("0 points!");
         score = score;
         showScore();
     }   else {
-        alert("Gryffondor +10 points!");
         score = score + 10;
         showScore();
     }
@@ -190,6 +184,7 @@ function timer(){
         if (sec < 0) {
             clearInterval(timer);
             alert("You are out of time!");
+            showScore();
         }
     }, 1000);
 }
@@ -248,9 +243,18 @@ function replay() {
 function storage() {
     var nameValue = document.getElementById("textBox");
     var nameStorage = nameValue.value;
-    console.log('input text =', nameValue);
-    nameStorage = localStorage.setItem("Name", nameStorage);
-    localName = localName.push(nameStorage);
-    scoreStorage = localStorage.setItem("Score", score);
-    localScore = localScore.push(scoreStorage);
+    playerStorage = localStorage.setItem("Name", nameStorage);
+    recentPlayers.name = nameStorage; 
+    recentPlayers.score = score;
+    var recentString = JSON.stringify(recentPlayers);
+    console.log(recentString);
+
+    var ol = document.createElement("ol");
+    ol.setAttribute("id", "ScoreList")
+    var li = document.createElement("li");
+
+    mainSection.appendChild(ol);
+    var ol = document.getElementById("ScoreList");
+    li.innerHTML = recentPlayers.name + " " + recentPlayers.score;
+    ol.appendChild(li);
 }
